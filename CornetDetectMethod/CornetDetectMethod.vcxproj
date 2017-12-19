@@ -146,6 +146,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="cornerDetectH.h" />
+    <ClCompile Include="harris.cpp" />
+    <ClCompile Include="run.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\images\lena.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
