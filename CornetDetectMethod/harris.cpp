@@ -41,13 +41,13 @@ void crrdet::cornerDetectHarris(const Mat& source, Mat& output, double alpha)
 	Mat dilated, localMax;
 	dilate(matrixMR, dilated, Mat());
 	compare(matrixMR, dilated, localMax, CMP_EQ);
-
+	
 
 	Mat cornerMap;
 	double quailtyLevel = 0.01;
 	double thresh = quailtyLevel*maxStrength;
-	cornerMap = matrixMR > thresh;
-
+	threshold(matrixMR, cornerMap, thresh, 255, THRESH_BINARY);
+	cornerMap.convertTo(cornerMap, CV_8U);
 	bitwise_and(cornerMap, localMax, cornerMap);
 
 	output = cornerMap.clone();
@@ -60,7 +60,7 @@ void crrdet::drawCornerOnImage(Mat& source, Mat& output)
 
 	for (int i = 0; it != itd; it++, i++) {
 		if (*it) {
-			circle(source, Point(i%output.cols, i / output.cols), 2, Scalar(255, 0, 0), 1);
+			circle(source, Point(i%output.cols, i/output.cols), 2, Scalar(255, 0, 0), 1);
 		}
 	}
 }
