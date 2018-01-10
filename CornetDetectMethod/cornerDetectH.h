@@ -9,11 +9,18 @@
 using namespace std;
 using namespace cv;
 
+
 namespace crrdet {
 
 
-	void cornerDetectHarris(const Mat& source, Mat& output, double alpha);
+	void cornerDetectHarris(const Mat& source, Mat& output, double alpha, int quailtyLevel);
 	void drawCornerOnImage(Mat& source, Mat& output);
+	void onChangeHarris(int, void*);
+	void runHarrisDetect();
+
+	void ShiTomasiCorDetect();
+	void onChangeTomasi(int, void*);
+	
 }
 
 #endif
